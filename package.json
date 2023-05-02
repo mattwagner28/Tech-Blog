@@ -1,5 +1,5 @@
 {
-  "name": "potluck-party",
+  "name": "Tech Blog",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -11,12 +11,13 @@
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "express-handlebars": "^3.1.0",
+    "express-handlebars": "^7.0.7",
     "handlebars": "^4.7.3",
     "mysql2": "^2.1.0",
-    "sequelize": "^5.21.5"
+    "sequelize": "^6.31.1"
   },
   "devDependencies": {
-    "eslint": "^7.13.0"
+    "eslint": "^7.13.0",
+    "nodemon": "^2.0.22"
   }
 }

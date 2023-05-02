@@ -1,0 +1,14 @@
+[
+    {
+        "title": "Connecting FE to BE",
+        "content": "I'm finding it's much better to build up the backend first, and test-seed the database",
+        "author": "testMatt",
+        "date": "April 28th, 2023"
+    },
+    {
+        "title": "Handlebars",
+        "content": "Is kind of like writing an HTML file",
+        "author": "testMatt",
+        "date": "April 28th, 2023"
+    }
+]
