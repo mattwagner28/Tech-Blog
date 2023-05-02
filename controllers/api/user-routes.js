@@ -1,48 +1,8 @@
 const router = require('express').Router();
-const Blog = require('../models/Blog');
-const User = require('../models/User');
+const { User } = require('../../models');
 
-
-// route to get all blog posts
-router.get('/', async (req, res) => {
-  const blogData = await Blog.findAll().catch((err) => { 
-      res.json(err);
-    });
-      const blogPosts = blogData.map((post) => post.get({ plain: true }));
-      // console.log("hello", blogPosts);
-      res.render('all', { blogPosts });
-    });
-    
-    router.post('/', async (req, res) => {
-      console.log('BACKEND', req.body)
-      try { 
-        const blogData = await Blog.create({
-        title: req.body.title,
-        content: req.body.content,
-        author: req.body.author,
-        date: req.body.date,
-      });
-      // if the dish is successfully created, the new response will be returned as json
-      console.log(blogData);
-      res.status(200).json(blogData);
-    } catch (err) {
-      console.log(err);
-      res.status(400).json(err);
-    }
-    });
-    
-
-// Login route
-router.get('/login', (req, res) => {
-  // if (req.session.loggedIn) {
-  //   res.redirect('/');
-  //   return;
-  // }
-  res.render('login');
-});
-
-// // CREATE new user
-router.post('/login', async (req, res) => {
+// CREATE new user
+router.post('/', async (req, res) => {
   try {
     const dbUserData = await User.create({
       username: req.body.username,
@@ -100,6 +60,17 @@ router.post('/login', async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
+  }
+});
+
+// Logout
+router.post('/logout', (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
   }
 });
 
